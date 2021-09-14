@@ -13,16 +13,19 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+    @FindBy(id = "cui-login")
+    @CacheLookup
+    public WebElement linkLogin ;
 
-    @FindBy(id = "Email")
+    @FindBy(id = "INT_USERNAME")
     @CacheLookup
     public WebElement txtEmail;
 
-    @FindBy(id = "Password")
+    @FindBy(id = "INT_PASSWORD")
     @CacheLookup
     public WebElement txtPassword;
 
-    @FindBy(xpath = "//input[@value='Log in']")
+    @FindBy(xpath = "//*[@id='INT_LOGIN_BTN']")
     @CacheLookup
     public WebElement btnLogin;
 
@@ -43,6 +46,11 @@ public class LoginPage {
 
     public void clickLogin() {
         btnLogin.click();
+    }
+
+    public void navigateToPage(WebElement page) {
+        page = linkLogin;
+        page.click();
     }
 
     public void clickLogout() {
